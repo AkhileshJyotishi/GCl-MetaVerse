@@ -54,7 +54,7 @@ export default function Home() {
         <h1 className="lg:text-3xl text-[27px] font-bold text-center mb-8">
           Welcome to GCL Season 2
         </h1>
-        <div className="bg-white bg-opacity-65 lg:px-8 px-4 py-6 text-center lg:min-w-[500px] flex flex-col gap-2">
+        <div className="bg-white bg-opacity-30 backdrop-blur-3xl lg:px-8 px-4 py-6 text-center lg:min-w-[500px] flex flex-col gap-2">
           <div className="my-3">
             <div className="w-full border flex items-center justify-between text-sm  border-[#022043] px-2 py-2 mt-1  bg-white">
               <input
@@ -117,7 +117,12 @@ export default function Home() {
           >
             Let’s Visit Friends House in London
           </button>
-          <div className="mt-2 bg-white py-2 px-6 font-bold text-xs w-fit m-auto">
+          <div className="mt-2 flex items-center bg-white py-2 px-6 font-bold text-xs w-fit m-auto">
+            <img
+              className="w-10 h-8"
+              src="https://s3-alpha-sig.figma.com/img/8927/633b/3439c14941f558bf33f47e58dd90d620?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IYD2himESKq698kpennUqZgg6s8BGcyashQUEcUyOMvylmyKylxie0xp399eeLsHN77Sg7wBvDGx-MM0RpANeas89gsSiVjzvQJqxpldgy5jEWoaEaeKmn51dlQjoDxmJmM6opj3wICLb2rl0yjtOR~rTs0N3bjsYUIHPX5QQAHNybsG9JMpZTf5~SUao9Gl7NrGBHVzDoJpVpRs2Tj5o3O0yj5zi~dmb6oSQJQCwwW2NNeU4IIYvibJuMNDor2nSHBIO6JAxUholPYf7cTAG~2vq9vLEnPwlYy6Aw1diUJVuZxbyb38~yoX0U8FoS0Vx-DZm9YIcGD7s8Sr74-FqQ__"
+              alt=""
+            />{" "}
             Active Visitors: <span className="text-[#571ABA]">12,394</span>
           </div>
         </div>
