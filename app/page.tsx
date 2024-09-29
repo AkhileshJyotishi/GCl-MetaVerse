@@ -39,7 +39,7 @@ export default function Home() {
   const [gender, setGender] = useState<string | null>(null);
   return (
     <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start lg:p-14 p-4 lg:px-20 px-2">
-      <div className="flex items-center lg:w-fit w-full justify-between">
+      <div className="flex items-center lg:w-fit w-full justify-between ">
         <Image
           src={"/Final Logo_Coloured.svg"}
           alt="Next move"
@@ -54,20 +54,20 @@ export default function Home() {
         <h1 className="lg:text-3xl text-[27px] font-bold text-center mb-8">
           Welcome to GCL Season 2
         </h1>
-        <div className="bg-white bg-opacity-30 backdrop-blur-3xl lg:px-8 px-4 py-6 text-center lg:min-w-[500px] flex flex-col gap-2">
+        <div className="bg-white bg-opacity-30 backdrop-blur-3xl lg:px-8 px-1 md:px-4 py-6 text-center lg:min-w-[500px] flex flex-col gap-2">
           <div className="my-3">
-            <div className="w-full border flex items-center justify-between text-sm  border-[#022043] px-2 py-2 mt-1  bg-white">
+            <div className="w-full border flex items-center justify-between text-sm border-[#022043] px-2 py-2 mt-1 bg-white flex-wrap">
               <input
                 type="text"
                 placeholder="Enter Your Name"
                 className="focus:outline-none max-w-[120px] text-[#571ABA] placeholder:text-[#571ABA] font-semibold"
               />
-              <span className="text">a proud♟️Chess Player</span>
+              <span className="text text-[#797979]">a proud♟️Chess Player</span>
             </div>
           </div>
 
           <div className="my-1 mb-4">
-            <div className="grid grid-flow-row grid-cols-2 mt-1  gap-2">
+            <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 mt-1  gap-2 ">
               <div
                 onClick={() => {
                   setGender("male");
@@ -84,6 +84,7 @@ export default function Home() {
                 </div>
                 <div>{gender == "male" ? <Checked /> : <UnChecked />}</div>
               </div>
+
               <div
                 onClick={() => {
                   setGender("female");
@@ -106,25 +107,57 @@ export default function Home() {
                 <div>{gender == "female" ? <Checked /> : <UnChecked />}</div>
               </div>
             </div>
+            {/* <div className="grid grid-cols-3 grid-rows-1 gap-3 relative  w-full my-3">
+            <div className="bg-[#F7F644]"> <Image alt="look-1" src={"/logo-1.png"} height={800} width={800} className=""/></div>
+            <div className="bg-[#F7F644]"><Image alt="look-2" src={"/logo-2.png"} height={400} width={400} className="" /></div>
+            <div className="bg-[#F7F644]"><Image alt="look-3" src={"/logo-3.png"} height={800} width={800} className="" /></div>
+          </div> */}
           </div>
           <button
             disabled={gender == null}
             className={
               gender == null
-                ? "bg-opacity-65 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-2 text-center flex items-center w-full justify-center"
-                : "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-2 text-center flex items-center w-full justify-center"
+                ? "bg-opacity-65 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center text-xl"
+                : "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center text-xl"
             }
           >
             Let’s Visit Friends House in London
           </button>
-          <div className="mt-2 flex items-center bg-white py-2 px-6 font-bold text-xs w-fit m-auto">
-            <img
-              className="w-10 h-8"
-              src="https://s3-alpha-sig.figma.com/img/8927/633b/3439c14941f558bf33f47e58dd90d620?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IYD2himESKq698kpennUqZgg6s8BGcyashQUEcUyOMvylmyKylxie0xp399eeLsHN77Sg7wBvDGx-MM0RpANeas89gsSiVjzvQJqxpldgy5jEWoaEaeKmn51dlQjoDxmJmM6opj3wICLb2rl0yjtOR~rTs0N3bjsYUIHPX5QQAHNybsG9JMpZTf5~SUao9Gl7NrGBHVzDoJpVpRs2Tj5o3O0yj5zi~dmb6oSQJQCwwW2NNeU4IIYvibJuMNDor2nSHBIO6JAxUholPYf7cTAG~2vq9vLEnPwlYy6Aw1diUJVuZxbyb38~yoX0U8FoS0Vx-DZm9YIcGD7s8Sr74-FqQ__"
-              alt=""
-            />{" "}
-            Active Visitors: <span className="text-[#571ABA]">12,394</span>
+          <div className="flex flex-col gap-2 my-2">
+            <div className="mx-auto font-bold text-black text-xl">♟️ OR ♟️</div>
+            <div className="mx-auto text-center font-bold text-xl w-4/5 text-[#022043]">You can create your own custom look in few {"\n"}simple steps. It is fun! </div>
+            <button
+              className={
+                "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-4 text-center flex items-center w-full justify-center text-xl"
+              }
+            >
+              Create My Own Look
+            </button>
           </div>
+          <div className="flex gap-3 justify-between flex-wrap">
+
+            <div className="mt-2 flex items-center bg-white py-2 px-6 font-bold text-xs w-fit m-auto ">
+              <Image
+                width={400}
+                height={400}
+                className="w-10 h-8"
+                src="/hand.gif"
+                alt=""
+              />{" "}
+              <span className="font-bold">  Active Visitors:</span> <span className="text-[#571ABA]">12,394</span>
+            </div>
+            <div className="mt-2 flex items-center bg-white py-2 px-6 font-bold text-xs w-fit m-auto">
+              <Image
+                className="w-10 h-8"
+                width={400}
+                height={400}
+                src="/stats.gif"
+                alt=""
+              />{" "}
+              <span className="font-bold">Sound:</span> <span className="text-[#571ABA]">On</span>
+            </div>
+          </div>
+
         </div>
       </div>
       <div className="bg-white lg:block hidden bg-opacity-10 backdrop-blur-md border border-white/20 rounded-lg p-4 px-6">

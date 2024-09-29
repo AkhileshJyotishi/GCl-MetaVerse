@@ -1,0 +1,26 @@
+.progressBar {
+  appearance: none;
+  height: 14px;
+  border-radius: 100px;
+  margin: auto;
+}
+
+.progressBar::-webkit-progress-bar {
+  background: #f7f644;
+  padding: 3px;
+  border-radius: 100px;
+}
+
+.progressBar::-webkit-progress-value {
+  /* width:400px; */
+  background-color: #571aba;
+  border-radius: 100px;
+
+  /* border-top-left-radius: 100px; */
+  /* border-bottom-left-radius: 100px; */
+}
+
+.progressBar::-moz-progress-bar {
+  background-color: #571aba;
+  border-radius: 100px;
+}
