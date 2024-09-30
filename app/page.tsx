@@ -1,5 +1,7 @@
 "use client";
+import classNames from "classnames";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const UnChecked = () => {
@@ -37,16 +39,18 @@ const Checked = () => {
 };
 export default function Home() {
   const [gender, setGender] = useState<string | null>(null);
+  const [selected, setselected] = useState(0);
+  const router = useRouter()
   return (
-    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start lg:p-14 p-4 lg:px-20 px-2">
-      <div className="flex items-center lg:w-fit w-full justify-between ">
+    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start lg:pt-14 pt-4 lg:px-20 px-2">
+      <div className="flex items-center lg:w-fit w-full justify-between    gap-2">
         <Image
           src={"/Final Logo_Coloured.svg"}
           alt="Next move"
           width={170}
           height={300}
         />
-        <div className="bg-white block lg:hidden bg-opacity-10 backdrop-blur-md border border-white/20 rounded-lg p-4 px-6">
+        <div className="bg-white block lg:hidden bg-opacity-10 backdrop-blur-md border border-white/20 rounded-lg p-1 px-2 sm:p-2 sm:px-4 lg:p-4 lg:px-6 shadow-xl">
           <Image src={"/chess.svg"} alt="Next move" width={120} height={300} />
         </div>
       </div>
@@ -54,7 +58,7 @@ export default function Home() {
         <h1 className="lg:text-3xl text-[27px] font-bold text-center mb-8">
           Welcome to GCL Season 2
         </h1>
-        <div className="bg-white bg-opacity-30 backdrop-blur-3xl lg:px-8 px-1 md:px-4 py-6 text-center lg:min-w-[500px] flex flex-col gap-2">
+        <div className=" bg-white bg-opacity-30 backdrop-blur-3xl lg:px-8 px-1 md:px-4 py-6 text-center lg:min-w-[700px] flex flex-col gap-2">
           <div className="my-3">
             <div className="w-full border flex items-center justify-between text-sm border-[#022043] px-2 py-2 mt-1 bg-white flex-wrap">
               <input
@@ -71,6 +75,7 @@ export default function Home() {
               <div
                 onClick={() => {
                   setGender("male");
+                  setselected(0)
                 }}
                 className={
                   gender == "male"
@@ -88,6 +93,8 @@ export default function Home() {
               <div
                 onClick={() => {
                   setGender("female");
+                  setselected(0)
+
                 }}
                 className={
                   gender == "female"
@@ -102,39 +109,54 @@ export default function Home() {
                     height={20}
                     src={"/female.png"}
                   />{" "}
-                  Male
+                  Female
                 </div>
                 <div>{gender == "female" ? <Checked /> : <UnChecked />}</div>
               </div>
             </div>
-            {/* <div className="grid grid-cols-3 grid-rows-1 gap-3 relative  w-full my-3">
-            <div className="bg-[#F7F644]"> <Image alt="look-1" src={"/logo-1.png"} height={800} width={800} className=""/></div>
-            <div className="bg-[#F7F644]"><Image alt="look-2" src={"/logo-2.png"} height={400} width={400} className="" /></div>
-            <div className="bg-[#F7F644]"><Image alt="look-3" src={"/logo-3.png"} height={800} width={800} className="" /></div>
-          </div> */}
+            {
+              gender == "male" &&
+              <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative   my-3 w-full sm:w-11/12 mx-auto">
+                <div className={classNames("relative", selected == 1 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(1)}> <Image alt="look-1" src={"/logo-1.png"} fill /></div>
+                <div className={classNames("relative", selected == 2 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(2)}><Image alt="look-2" src={"/logo-2.png"} fill /></div>
+                <div className={classNames("relative", selected == 3 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(3)}><Image alt="look-3" src={"/logo-3.png"} height={800} width={800} className="h-28 sm:h-32 w-40 md:h-44" /></div>
+              </div>
+            }
+            {
+              gender == "female" &&
+              <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative   my-3 w-full sm:w-11/12 mx-auto">
+                <div className={classNames("relative", selected == 4 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(4)}> <Image alt="look-1" src={"/logo-1.png"} fill /></div>
+                <div className={classNames("relative", selected == 5 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(5)}><Image alt="look-2" src={"/logo-2.png"} fill /></div>
+                <div className={classNames("relative", selected == 6 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(6)}><Image alt="look-3" src={"/logo-3.png"} height={800} width={800} className="h-28 sm:h-32 w-40 md:h-44" /></div>
+              </div>
+            }
           </div>
           <button
-            disabled={gender == null}
+            disabled={gender == null || selected==0}
             className={
-              gender == null
+              (gender == null || selected==0)
                 ? "bg-opacity-65 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center text-xl"
                 : "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center text-xl"
             }
+            onClick={() => router.push("/loading")}
           >
             Let’s Visit Friends House in London
           </button>
-          <div className="flex flex-col gap-2 my-2">
-            <div className="mx-auto font-bold text-black text-xl">♟️ OR ♟️</div>
-            <div className="mx-auto text-center font-bold text-xl w-4/5 text-[#022043]">You can create your own custom look in few {"\n"}simple steps. It is fun! </div>
-            <button
-              className={
-                "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-4 text-center flex items-center w-full justify-center text-xl"
-              }
-            >
-              Create My Own Look
-            </button>
-          </div>
-          <div className="flex gap-3 justify-between flex-wrap">
+          {
+            gender &&
+            <div className="flex flex-col gap-2 my-2">
+              <div className="mx-auto font-bold text-black text-xl">♟️ OR ♟️</div>
+              <div className="mx-auto text-center font-bold text-xl w-4/5 text-[#022043]">You can create your own custom look in few {"\n"}simple steps. It is fun! </div>
+              <button
+                className={
+                  "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-4 text-center flex items-center w-full justify-center text-xl"
+                }
+              >
+                Create My Own Look
+              </button>
+            </div>
+          }
+          <div className="-order-1 sm:order-1 flex gap-3 justify-between flex-wrap">
 
             <div className="mt-2 flex items-center bg-white py-2 px-6 font-bold text-xs w-fit m-auto ">
               <Image
@@ -146,7 +168,7 @@ export default function Home() {
               />{" "}
               <span className="font-bold">  Active Visitors:</span> <span className="text-[#571ABA]">12,394</span>
             </div>
-            <div className="mt-2 flex items-center bg-white py-2 px-6 font-bold text-xs w-fit m-auto">
+            <div className="mt-2 flex items-center bg-white py-2 px-6 font-bold text-xs w-11/12 sm:w-fit m-auto">
               <Image
                 className="w-10 h-8"
                 width={400}
