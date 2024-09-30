@@ -149,14 +149,15 @@ export default function Home() {
                 <div className={classNames("relative border border-black", selected == 3 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(3)}><Image alt="look-3" src={"/logo-3.png"} height={800} width={800} className="h-24 sm:h-28 w-36 md:h-36" /></div>
               </div>
             }
-            {
+              {
               gender == "female" &&
-              <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative   my-3 w-full sm:w-11/12 mx-auto">
-                <div className={classNames("relative", selected == 4 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(4)}> <Image alt="look-1" src={"/logo-1.png"} fill /></div>
-                <div className={classNames("relative", selected == 5 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(5)}><Image alt="look-2" src={"/logo-2.png"} fill /></div>
-                <div className={classNames("relative", selected == 6 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(6)}><Image alt="look-3" src={"/logo-3.png"} height={800} width={800} className="h-28 sm:h-32 w-40 md:h-44" /></div>
+              <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative   my-3 w-full  mx-auto">
+                <div className={classNames("relative border border-black", selected == 1 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(4)}> <Image alt="look-1" src={"/female-logo-1.png"} fill /></div>
+                <div className={classNames("relative border border-black", selected == 2 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(5)}><Image alt="look-2" src={"/female-logo-2.png"} fill /></div>
+                <div className={classNames("relative border border-black", selected == 3 ? "bg-[#F7F644]" : "bg-white")} onClick={() => setselected(6)}><Image alt="look-3" src={"/female-logo-1.png"} height={800} width={800} className="h-24 sm:h-28 w-36 md:h-36" /></div>
               </div>
             }
+          
           </div>
           <button
             disabled={gender == null || selected == 0 || name == ""}
