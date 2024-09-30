@@ -7,15 +7,15 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "TechM GCL 2024 Metaverse",
   description: "Tech Mahindra Global Chess League (TechM GCL) is the world’s first and largest official franchise chess league bringing fans together to witness the game in a never-seen-before avatar, a metaverse experience.",
-  icons: "/logo-master.svg",
+  icons: "/favicon.ico",
   openGraph: {
     type: "website",
-    url: "https://gcl-meta-verse-git-master-akhilesh-jyotishis-projects.vercel.app/",
-    title: "GCL Meta verse",
+    url: "https://gcl-meta-verse.vercel.app/",
+    title: "TechM GCL 2024 Metaverse",
     description: "Tech Mahindra Global Chess League (TechM GCL) is the world’s first and largest official franchise chess league bringing fans together to witness the game in a never-seen-before avatar, a metaverse experience.",
-    siteName: "GCL Meta verse",
+    siteName: "TechM GCL 2024 Metaverse",
     images: [{
-      url: "https://gcl-meta-verse-git-master-akhilesh-jyotishis-projects.vercel.app/logo-master.svg",
+      url: "/favicon.ico",
     }],
   }
 };
