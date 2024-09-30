@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <main className="relative h-screen w-screen overflow-hidden">
 
-            <video autoPlay muted loop id="myVideo" className="absolute w-auto h-auto min-w-full min-h-full object-cover -z-10">
+            <video autoPlay playsInline  muted loop id="myVideo" className="absolute w-auto select-none h-auto min-w-full min-h-full object-cover -z-10">
                 <source src={"/loading-background.mp4"} type="video/mp4" />
             </video>
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[rgba(2,32,67,0.91)]">
