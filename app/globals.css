@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 * {
-    margin:0;
-    padding:0;
+  margin: 0;
+  padding: 0;
+}
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow:hidden;
+  height: 100%;
+  overscroll-behavior: none;
 }
