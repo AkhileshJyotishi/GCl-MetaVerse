@@ -41,7 +41,7 @@ export default function Instructions() {
     <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-no-repeat bg-instructions-bg  gap-8 lg:items-start items-center lg:justify-between justify-start ">
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[rgba(2,32,67,0.91)]" />
 
-      <div className="w-11/12  my-auto bg-white bg-opacity-30 backdrop-blur-3xl lg:px-8 px-4 py-6 text-center sm:w-[500px] flex flex-col gap-2 mx-auto shadow-xl">
+      <div className="w-11/12  my-auto bg-white bg-opacity-30 backdrop-blur-3xl lg:px-8 px-4 py-3 text-center sm:w-[500px] flex flex-col gap-2 mx-auto shadow-xl">
         <div className="mx-auto">
           <h1 className="text-[#F7F644] w-fit mx-auto text-2xl font-bold my-2">Instructions </h1>
           <video autoPlay muted loop id="myVideo" className="hidden md:block md:w-[350px] lg:w-[450px] rounded-xl">
@@ -91,7 +91,8 @@ export default function Instructions() {
             </ol>
           </div>
           <button
-            className={"bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2 my-2 py-2 px-2 text-center flex items-center w-full justify-center md:text-xl"} >
+            type="button"
+            className={"bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2 mt-4 py-2 px-2 text-center flex items-center w-full justify-center md:text-xl"} >
             {/* Enter Friends House */}
             Let’s Visit Friends House in London
           </button>

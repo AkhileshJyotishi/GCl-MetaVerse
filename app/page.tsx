@@ -59,7 +59,7 @@ export default function Home() {
     }
   }, [isSoundOn]);
   return (
-    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start overflow-hidden ">
+    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start overflow-hidden ">
       {/* lg:pt-14 pt-4 lg:px-20 px-2 */}
       <div className="absolute lg:top-14 top-4 lg:left-20 left-2 flex items-center   justify-between   gap-2">
         <Image
@@ -161,6 +161,7 @@ export default function Home() {
           </div>
           <button
             disabled={gender == null || selected == 0 || name == ""}
+            type="button"
             className={
               (gender == null || selected == 0 || name == "")
                 ? "bg-opacity-65 bg-[#571ABA80] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center px-2 md:text-xl"
@@ -177,8 +178,9 @@ export default function Home() {
               <div className="mx-auto font-bold text-black text-xl">♟️ OR ♟️</div>
               <div className="mx-auto text-center font-bold text-xl w-full text-[#022043]">You can create your own custom look in few {"\n"}simple steps. It is fun! </div>
               <button
+              type="button"
                 className={
-                  "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-4 text-center flex items-center w-full justify-center md:text-xl"
+                  "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl"
                 }
               >
                 Create My Own Look
