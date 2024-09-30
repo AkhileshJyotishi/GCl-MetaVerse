@@ -41,7 +41,7 @@ export default function Instructions() {
     <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-no-repeat bg-instructions-bg  gap-8 lg:items-start items-center lg:justify-between justify-start ">
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[rgba(2,32,67,0.91)]" />
 
-      <div className="my-auto bg-white bg-opacity-30 backdrop-blur-3xl lg:px-8 px-4 py-6 text-center lg:min-w-[500px] flex flex-col gap-2 mx-auto shadow-xl">
+      <div className="w-11/12  my-auto bg-white bg-opacity-30 backdrop-blur-3xl lg:px-8 px-4 py-6 text-center sm:w-[500px] flex flex-col gap-2 mx-auto shadow-xl">
         <div className="mx-auto">
           <h1 className="text-[#F7F644] w-fit mx-auto text-2xl font-bold my-2">Instructions </h1>
           <video autoPlay muted loop id="myVideo" className="hidden md:block md:w-[350px] lg:w-[450px] rounded-xl">
@@ -52,9 +52,9 @@ export default function Instructions() {
           </video>
         </div>
         <div className="">
-          <h1 className="text-2xl text-[#F7F644] font-bold my-3">Explore GCL Friends house</h1>
-          <div className="md:grid gap-4 hidden md:grid-cols-2">
-            <div className="bg-white p-2 flex flex-col gap-1">
+          <h1 className="text-xl md:text-2xl text-[#F7F644] font-bold my-3">Explore GCL Friends house</h1>
+          <div className="md:grid gap-4 hidden md:grid-cols-2 text-start">
+            <div className="bg-white p-2 flex flex-col gap-1 ">
               <div className="text-[#571ABA] font-bold w-fit" >Coin Collection</div>
               <div className="w-fit text-black font-bold">Collect coins to buy goodies</div>
             </div>
@@ -80,18 +80,18 @@ export default function Instructions() {
             </div>
           </div>
           <div className="md:hidden bg-white p-2 font-bold">
-            <ol type="1">
+            <ol type="1" className="text-start">
               <li className="w-fit">  1.Collect GCL Coins </li>
               <li className="w-fit"> 2.Enter Reception area</li>
-              <li className="w-fit">Visit The Light Hall</li>
-              <li className="w-fit">Play Live Games in Fan Zone</li>
-              <li className="w-fit">Explore Team Zone</li>
-              <li className="w-fit">Visit North Lobby</li>
-              <li className="w-fit">Visit East Lobby</li>
+              <li className="w-fit">3.Visit The Light Hall</li>
+              <li className="w-fit">4.Play Live Games in Fan Zone</li>
+              <li className="w-fit">5.Explore Team Zone</li>
+              <li className="w-fit">6.Visit North Lobby</li>
+              <li className="w-fit">7.Visit East Lobby</li>
             </ol>
           </div>
           <button
-            className={"bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2 my-2 py-2 px-2 text-center flex items-center w-full justify-center text-xl"} >
+            className={"bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2 my-2 py-2 px-2 text-center flex items-center w-full justify-center md:text-xl"} >
             {/* Enter Friends House */}
             Let’s Visit Friends House in London
           </button>
