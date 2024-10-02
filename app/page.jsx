@@ -273,7 +273,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start overflow-x-hidden ">
+    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start  lg:justify-between justify-start overflow-x-hidden ">
       {/* lg:pt-14 pt-4 lg:px-20 px-2 */}
       {loading ? (
         <main className=" z-[100] relative min-h-screen w-screen overflow-x-hidden">
@@ -303,10 +303,10 @@ export default function Home() {
         </main>
       ) : (
         <>
-          <div className="absolute lg:top-14 top-4 lg:left-20 left-2 flex items-center   justify-between   gap-2">
+          <div className="mt-4 ml-2 lg:ml-0 lg:mt-0 lg:absolute lg:top-14 top-4 lg:left-20 left-2 flex lg:items-center justify-between gap-2">
             <Image
               src={"/Final Logo_Coloured.svg"}
-              alt="Next move"
+              alt="Tech Mahindra Global Chess League"
               width={150}
               height={300}
               className="w-40"
@@ -323,7 +323,7 @@ export default function Home() {
             {/* <Image src={"/chess.svg"} alt="Next move" width={120} height={310} className="hidden md:block" />
             <Image src={"/partner.png"} alt="Next move" width={140} height={300} className="md:hidden block rounded-lg" /> */}
           </div>
-          <div className="mx-auto mt-[10rem] sm:mt-14 w-11/12">
+          <div className="mx-auto mt-[8.5rem] sm:mt-14 w-11/12">
             <h1 className="lg:text-3xl text-[22px] sm:text-black text-[#571ABA] font-bold text-center mb-8">
               Welcome to GCL Season 2
             </h1>
