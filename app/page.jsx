@@ -108,7 +108,7 @@ export default function Home() {
 
   const uploadObject = async (file, name) => {
     // const toastId = toast.loading("Uploading");
-    console.log("is this working");
+    console.log("----uploading----");
 
     const params = {
       Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
