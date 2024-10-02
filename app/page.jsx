@@ -126,7 +126,8 @@ export default function Home() {
       const uploadedObjectUrl = `https://${params.Bucket}.s3.amazonaws.com/${params.Key};`;
       // console.log("------ the uploaded url", uploadedObjectUrl);
       // return { data, url: uploadedObjectUrl };
-      //set loading to true and upload progress
+      //set loading to true and upload progres
+      window.open("https://events.gclverse.com/entrance1/?avatarId=" + name, "_blank");s
 
       onLoadingComplete();
       setloading(false);
