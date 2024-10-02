@@ -189,12 +189,12 @@ export default function Home() {
     // handleNext();
     const avatarId = avatarUrlSplitter(avatarUrl);
     // window.open("https://events.gclverse.com/entrance1", "_blank");
-    const combinedGlbFile = await combineAnimations(avatarUrl, setFile).catch(console.error);
+    const combinedGlbFile = await combineAnimations(avatarUrl, gender, setFile).catch(console.error);
     console.log("combine animations completed and data is", combinedGlbFile);
     uploadObject(combinedGlbFile, avatarUrlSplitter(avatarUrl));
   }
 
-  async function combineAnimations(modelPathName, setFile) {
+  async function combineAnimations(modelPathName, gender, setFile) {
     const gltfLoader = new GLTFLoader();
     const gltfExporter = new GLTFExporter();
     const group = new Group();
@@ -241,7 +241,7 @@ export default function Home() {
     <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start overflow-x-hidden ">
       {/* lg:pt-14 pt-4 lg:px-20 px-2 */}
       {loading ? (
-        <main className=" z-[100] relative h-screen w-screen overflow-x-hidden">
+        <main className=" z-[100] relative min-h-screen w-screen overflow-x-hidden">
           <video autoPlay playsInline muted loop id="myVideo" className="absolute w-auto select-none h-auto min-w-full min-h-full object-cover -z-10">
             <source src={"/loading-background.mp4"} type="video/mp4" />
           </video>

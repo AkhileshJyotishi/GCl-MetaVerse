@@ -30,7 +30,7 @@ const AvatarIframe = ({ setRpmFrame, setReadyPlayerUrl, isMale }) => {
 
   useEffect(() => {
     if (frame.current === null || frame.current === undefined) return;
-    frame.current?.setAttribute("src", `https://${subdomain}.readyplayer.me/avatar?lod=2&clearCache&frameApi&quality=low&morphTargets=none&gender=${isMale ? "male" : "female"}`);
+    frame.current?.setAttribute("src", `https://${subdomain}.readyplayer.me/avatar?lod=2&clearCache&frameApi&quality=low&morphTargets=none&gender=${isMale ? "female" : "male"}`);
     //lod=2
     //frameApi
     // frame.current.setAttribute("src", `https://${subdomain}.readyplayer.me/avatar?frameApi&darkTheme`);
