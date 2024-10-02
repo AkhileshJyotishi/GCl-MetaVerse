@@ -347,7 +347,7 @@ export default function Home() {
                 <div className="mt-2 flex items-center bg-white py-1 px-3 font-bold text-xs w-fit ">
                   <Image width={400} height={400} className="w-10 h-7" src="/hand.gif" alt="" /> <span className="font-bold"> Active Visitors:</span> <span className="text-[#571ABA]">{activeVisitors}</span>
                 </div>
-                <div className="mt-2 hidden sm:flex items-center bg-white py-1 px-3 font-bold text-xs w-fit min-w-[125px]" onClick={toggleSound}>
+                <div className="mt-2 cursor-pointer hidden sm:flex items-center bg-white py-1 px-3 font-bold text-xs w-fit min-w-[125px]" onClick={toggleSound}>
                   <Image className="w-10 h-5" width={400} height={400} src="/stats.gif" alt="" /> <span className="font-bold">Sound:</span>
                   <span className="text-[#571ABA] cursor-pointer">{isSoundOn ? "On" : "Off"}</span>
                   <audio ref={audioRef} loop>
