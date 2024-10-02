@@ -55,11 +55,11 @@ const maleAnimations = {
 };
 
 const femaleAnimations = {
-  Idle: "/animations/female/Idle.glb",
-  Walk: "/animations/female/Walk.glb",
-  WalkBack: "/animations/female/WalkBack.glb",
-  WalkLeft: "/animations/female/WalkLeft.glb",
-  WalkRight: "/animations/female/WalkRight.glb",
+  Idle: "/animations/female/IdleFemale.glb",
+  Walk: "/animations/female/WalkFemale.glb",
+  WalkBack: "/animations/female/WalkBackFemale.glb",
+  WalkLeft: "/animations/female/WalkLeftFemale.glb",
+  WalkRight: "/animations/female/WalkRightFemale.glb",
 };
 
 const maleAvatars = [
