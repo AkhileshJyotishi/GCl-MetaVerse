@@ -11,7 +11,7 @@ import { Upload } from "@aws-sdk/lib-storage";
 import AvatarIframe from "@/app/components/avatar-section/AvatarIframe";
 import { toast } from "react-toastify";
 import { BasicProgressBarWithLabel } from "./components/progress";
-
+import { Audiowide } from "next/font/google";
 const s3Client = new S3Client({
   // endpoint: process.env.NEXT_PUBLIC_AWS_ENDPOINT,
   forcePathStyle: false,
@@ -97,7 +97,7 @@ const femaleAvatars = [
     className: "h-24 sm:h-28 w-36 md:h-36",
   },
 ];
-
+const audiowide = Audiowide({ subsets: ["latin"], weight: "400" });
 export default function Home() {
   const [gender, setGender] = useState(null);
   const [selected, setselected] = useState(0);
@@ -273,7 +273,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start  lg:justify-between justify-start overflow-x-hidden ">
+    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center  lg:justify-between justify-start overflow-x-hidden ">
       {/* lg:pt-14 pt-4 lg:px-20 px-2 */}
       {loading ? (
         <main className=" z-[100] relative min-h-screen w-screen overflow-x-hidden">
@@ -305,7 +305,7 @@ export default function Home() {
         <>
           <div className="mt-4 ml-2 lg:ml-0 lg:mt-0 lg:absolute lg:top-14 top-4 lg:left-20 left-2 flex lg:items-center justify-between gap-2">
             <Image
-              src={"/Final Logo_Coloured.svg"}
+              src={"/logo.svg"}
               alt="Tech Mahindra Global Chess League"
               width={150}
               height={300}
@@ -323,11 +323,58 @@ export default function Home() {
             {/* <Image src={"/chess.svg"} alt="Next move" width={120} height={310} className="hidden md:block" />
             <Image src={"/partner.png"} alt="Next move" width={140} height={300} className="md:hidden block rounded-lg" /> */}
           </div>
-          <div className="mx-auto mt-[8.5rem] sm:mt-14 w-11/12">
-            <h1 className="lg:text-3xl text-[22px] sm:text-black text-[#571ABA] font-bold text-center mb-8">
+
+          <div className="mx-auto mt-auto sm:mt-14 w-full">
+            <h1
+              className={classNames(
+                "hidden sm:block lg:text-3xl text-[22px] sm:text-black text-[#571ABA] font-bold text-center mb-8",
+                audiowide.className
+              )}
+            >
               Welcome to GCL Season 2
             </h1>
-            <div className=" bg-white bg-opacity-30 backdrop-blur-xl lg:px-8 px-4 md:px-8 py-6 text-center  md:max-w-full mx-auto sm:w-[500px] flex flex-col">
+            <div className=" bg-white bg-opacity-30 backdrop-blur-xl lg:px-8 px-4 md:px-8 py-5 text-center  md:max-w-full mx-auto sm:w-[500px] flex flex-col">
+              <h1
+                className={classNames(
+                  "sm:hidden lg:text-3xl text-[22px] sm:text-black text-[#ebff00] font-bold text-center mb-6",
+                  audiowide.className
+                )}
+              >
+                Welcome to GCL Season 2
+              </h1>
+              <div className="flex mb-2 sm:my-2 sm:hidden gap-x-3 gap-y-2 justify-center flex-wrap ">
+                <div className=" flex items-center bg-white py-1 px-3 font-bold text-xs w-fit ">
+                  <Image
+                    width={400}
+                    height={400}
+                    className="w-10 h-7"
+                    src="/hand.gif"
+                    alt=""
+                  />{" "}
+                  <span className="font-bold"> Active Visitors:</span>{" "}
+                  <span className="text-[#571ABA]">{activeVisitors}</span>
+                </div>
+                <div
+                  className="cursor-pointer hidden sm:flex items-center bg-white py-1 px-3 font-bold text-xs w-fit min-w-[125px]"
+                  onClick={toggleSound}
+                >
+                  <Image
+                    className="w-10 h-5"
+                    width={400}
+                    height={400}
+                    src="/stats.gif"
+                    alt=""
+                  />{" "}
+                  <span className="font-bold">Sound:</span>
+                  <span className="text-[#571ABA] cursor-pointer">
+                    {isSoundOn ? "On" : "Off"}
+                  </span>
+                  <audio ref={audioRef} loop>
+                    <source src="/test-sound.mp3" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+              </div>
               <div className="mb-3">
                 <div className="w-full border flex items-center justify-between text-sm border-[#022043] px-3 py-4 mt-1 bg-white flex-wrap">
                   <input
@@ -340,8 +387,8 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="my-1 mb-4">
-                <div className="grid grid-flow-row grid-cols-2 mt-1  gap-2 ">
+              <div className="my-1 mb-3">
+                <div className="grid grid-flow-row grid-cols-2   gap-2 ">
                   <div
                     onClick={() => {
                       setGender("male");
@@ -391,43 +438,45 @@ export default function Home() {
                   </div>
                 </div>
                 {/* the avatars */}
-                <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative my-3 w-full mx-auto">
-                  {gender &&
-                    (gender === "male" ? maleAvatars : femaleAvatars).map(
-                      ({ id, src, height, width, className }) => (
-                        <div
-                          key={id}
-                          onClick={() => {
-                            setSelectedAvatarId(
-                              src.substring(1, src.length - 4)
-                            ),
-                              setselected(id);
-                          }}
-                          className={classNames(
-                            "relative border border-black",
-                            selected === id ? "bg-[#F7F644]" : "bg-white"
-                          )}
-                        >
-                          <Image
-                            alt={`look-${id}`}
-                            src={src}
-                            fill={!height && !width}
-                            height={height || undefined}
-                            width={width || undefined}
-                            className={className || ""}
-                          />
-                        </div>
-                      )
-                    )}
-                </div>
+                {gender && (
+                  <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative my-3 w-full mx-auto">
+                    {gender &&
+                      (gender === "male" ? maleAvatars : femaleAvatars).map(
+                        ({ id, src, height, width, className }) => (
+                          <div
+                            key={id}
+                            onClick={() => {
+                              setSelectedAvatarId(
+                                src.substring(1, src.length - 4)
+                              ),
+                                setselected(id);
+                            }}
+                            className={classNames(
+                              "relative border border-black",
+                              selected === id ? "bg-[#F7F644]" : "bg-white"
+                            )}
+                          >
+                            <Image
+                              alt={`look-${id}`}
+                              src={src}
+                              fill={!height && !width}
+                              height={height || undefined}
+                              width={width || undefined}
+                              className={className || ""}
+                            />
+                          </div>
+                        )
+                      )}
+                  </div>
+                )}
               </div>
               <button
                 disabled={gender == null || selected == 0 || name == ""}
                 type="button"
                 className={
                   gender == null || selected == 0 || name == ""
-                    ? "bg-opacity-65 bg-[#571ABA80] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center px-2 md:text-xl cursor-pointer"
-                    : "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl"
+                    ? "mt-1 bg-opacity-65 bg-[#571ABA80] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center px-2 md:text-xl cursor-pointer"
+                    : "mt-1 bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl"
                 }
                 onClick={() =>
                   window.open(
@@ -459,8 +508,8 @@ export default function Home() {
                   </button>
                 </div>
               )}
-              <div className="-order-1 sm:order-1 my-2 flex gap-x-3 gap-y-2 justify-center flex-wrap ">
-                <div className="mt-2 flex items-center bg-white py-1 px-3 font-bold text-xs w-fit ">
+              <div className="sm:flex mb-2 sm:my-2 hidden gap-x-3 gap-y-2 justify-center flex-wrap ">
+                <div className=" flex items-center bg-white py-1 px-3 font-bold text-xs w-fit ">
                   <Image
                     width={400}
                     height={400}
