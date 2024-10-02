@@ -241,7 +241,7 @@ export default function Home() {
     <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start overflow-x-hidden ">
       {/* lg:pt-14 pt-4 lg:px-20 px-2 */}
       {loading ? (
-        <main className=" z-[100] relative h-screen w-screen overflow-hidden">
+        <main className=" z-[100] relative h-screen w-screen overflow-x-hidden">
           <video autoPlay playsInline muted loop id="myVideo" className="absolute w-auto select-none h-auto min-w-full min-h-full object-cover -z-10">
             <source src={"/loading-background.mp4"} type="video/mp4" />
           </video>
