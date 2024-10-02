@@ -107,9 +107,11 @@ export default function Home() {
       // toast.dismiss(toastId);
 
       // toast.update(toastId, { render: "Upload complete", type: "success", isLoading: false });
-      // const uploadedObjectUrl = https://${params.Bucket}.s3.amazonaws.com/${params.Key});
-      console.log("------ the uploaded url", uploadedObjectUrl);
-      return { data, url: uploadedObjectUrl };
+      const uploadedObjectUrl = `https://${params.Bucket}.s3.amazonaws.com/${params.Key};`
+      // console.log("------ the uploaded url", uploadedObjectUrl);
+      // return { data, url: uploadedObjectUrl };
+//set loading to true and upload progress
+
     } catch (err) {
       console.log("Error Uploading object", err);
       // toast.update(toastId, { render: "Error uploading file", type: "error", isLoading: false });
