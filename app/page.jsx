@@ -12,6 +12,7 @@ import AvatarIframe from "@/app/components/avatar-section/AvatarIframe";
 import { toast } from "react-toastify";
 import { BasicProgressBarWithLabel } from "./components/progress";
 import { Audiowide } from "next/font/google";
+import { SpinnerCircular } from "spinners-react";
 const s3Client = new S3Client({
   // endpoint: process.env.NEXT_PUBLIC_AWS_ENDPOINT,
   forcePathStyle: false,
@@ -112,6 +113,8 @@ export default function Home() {
   const [selectedAvatarId, setSelectedAvatarId] = useState("");
   const [progress, setProgress] = useState(0);
   const [loading, setloading] = useState(false);
+  const [enabled,setEnabled]=useState(false);
+  const isMobile=window.innerWidth<=426
   let interval;
 
   const toggleSound = () => {
@@ -271,7 +274,7 @@ export default function Home() {
       gltfLoader.load(path, resolve, undefined, reject);
     });
   }
-  //   bg-val 
+  //   bg-val
   return (
     <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-[50%_0%] sm:bg-[50%_50%]   bg-no-repeat bg-mobile-hero-pattern sm:bg-hero-pattern  gap-8 lg:items-start items-center  lg:justify-between justify-start overflow-x-hidden  animate-slow-zoom">
       {/* lg:pt-14 pt-4 lg:px-20 px-2 */}
@@ -448,7 +451,9 @@ export default function Home() {
                   </div>
                 </div>
                 {gender && (
-                  <div className="mt-3 font-bold text-[#571ABA]">*&nbsp;Select Your Avatar</div>
+                  <div className="mt-3 font-bold text-[#571ABA]">
+                    *&nbsp;Select Your Avatar
+                  </div>
                 )}
                 {/* the avatars */}
                 {gender && (
@@ -492,15 +497,14 @@ export default function Home() {
                     : " bg-opacity-100 bg-[#fff700] border-black border  text-black font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl",
                   gender ? "mt-0" : "mt-3"
                 )}
-                onClick={() =>
-                  window.open(
-                    "https://events.gclverse.com/entrance1/?avatarId=" +
-                      selectedAvatarId,
-                    "_self"
-                  )
+                onClick={() => window.open(  "https://events.gclverse.com/entrance1/?avatarId=" +   selectedAvatarId,   "_self")
                 }
               >
-                Let&apos;s Visit Friends House in London
+                {enabled ? (
+                  <SpinnerCircular size={isMobile ?24:28 } color="#000" thickness={120} />
+                ) : (
+                  <div onClick={()=>setEnabled(true)}>Let&apos;s Visit Friends House in London</div>
+                )}
               </button>
               {gender && (
                 <div className="flex flex-col gap-2 my-2">
@@ -532,10 +536,7 @@ export default function Home() {
                     src="/hand.gif"
                     alt=""
                   />{" "}
-                  <span className="font-bold">
-                    {" "}
-                    Active Visitors:
-                  </span>
+                  <span className="font-bold"> Active Visitors:</span>
                   {"   "}
                   <span className="text-[#571ABA] ml-2">{activeVisitors}</span>
                 </div>
@@ -543,23 +544,23 @@ export default function Home() {
                   className=" cursor-pointer hidden sm:flex items-center bg-white py-1 px-3 font-bold text-xs w-fit min-w-[125px]"
                   onClick={toggleSound}
                 >
-                {
-                  isSoundOn ?
-                  <Image
-                    className="w-10 h-5"
-                    width={400}
-                    height={400}
-                    src="/stats.gif"
-                    alt=""
-                  />:
-                  <Image
-                    className="w-10 h-5"
-                    width={400}
-                    height={400}
-                    src="/stats.png"
-                    alt=""
-                  />
-                }
+                  {isSoundOn ? (
+                    <Image
+                      className="w-10 h-5"
+                      width={400}
+                      height={400}
+                      src="/stats.gif"
+                      alt=""
+                    />
+                  ) : (
+                    <Image
+                      className="w-10 h-5"
+                      width={400}
+                      height={400}
+                      src="/stats.png"
+                      alt=""
+                    />
+                  )}
                   <span className="font-bold">Sound:</span>
                   <span className="text-[#571ABA] cursor-pointer">
                     {isSoundOn ? "On" : "Off"}
