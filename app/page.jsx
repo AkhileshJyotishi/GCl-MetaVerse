@@ -238,7 +238,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start overflow-hidden ">
+    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center lg:justify-between justify-start overflow-x-hidden ">
       {/* lg:pt-14 pt-4 lg:px-20 px-2 */}
       {loading ? (
         <main className=" z-[100] relative h-screen w-screen overflow-hidden">
