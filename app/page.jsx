@@ -151,7 +151,7 @@ export default function Home() {
       const newAvatarId = defaultAvatar.substring(1, defaultAvatar.length - 4);
       window.open(
         "https://events.gclverse.com/entrance1/?avatarId=" + newAvatarId,
-        "_blank"
+        "_self"
       );
 
       // toast.update(toastId, { render: "Error uploading file", type: "error", isLoading: false });
@@ -177,7 +177,7 @@ export default function Home() {
       window.open(
         "https://events.gclverse.com/entrance1/?avatarId=" +
           avatarUrlSplitter(avatarUrl),
-        "_blank"
+        "_self"
       );
     }
   }, [progress]);
@@ -216,7 +216,7 @@ export default function Home() {
     console.log(avatarUrl);
     // handleNext();
     const avatarId = avatarUrlSplitter(avatarUrl);
-    // window.open("https://events.gclverse.com/entrance1", "_blank");
+    // window.open("https://events.gclverse.com/entrance1", "_self");
     const combinedGlbFile = await combineAnimations(
       avatarUrl,
       gender,
@@ -482,7 +482,7 @@ export default function Home() {
                   window.open(
                     "https://events.gclverse.com/entrance1/?avatarId=" +
                       selectedAvatarId,
-                    "_blank"
+                    "_self"
                   )
                 }
               >
