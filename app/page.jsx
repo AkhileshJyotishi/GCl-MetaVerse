@@ -39,7 +39,7 @@ const UnChecked = () => {
   );
 };
 
-const Checked = () => {
+const Checked = ({ fill }) => {
   return (
     <svg
       width="20"
@@ -50,7 +50,7 @@ const Checked = () => {
     >
       <path
         d="M12 23C6.47715 23 2 18.5228 2 13C2 7.47715 6.47715 3 12 3C17.5228 3 22 7.47715 22 13C22 18.5228 17.5228 23 12 23ZM12 21C16.4183 21 20 17.4183 20 13C20 8.58172 16.4183 5 12 5C7.58172 5 4 8.58172 4 13C4 17.4183 7.58172 21 12 21ZM12 18C9.23858 18 7 15.7614 7 13C7 10.2386 9.23858 8 12 8C14.7614 8 17 10.2386 17 13C17 15.7614 14.7614 18 12 18Z"
-        fill="black"
+        fill={fill}
       />
     </svg>
   );
@@ -271,9 +271,9 @@ export default function Home() {
       gltfLoader.load(path, resolve, undefined, reject);
     });
   }
-
+  //   bg-val 
   return (
-    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-hero-pattern  gap-8 lg:items-start items-center  lg:justify-between justify-start overflow-x-hidden ">
+    <main className="flex lg:flex-row flex-col min-h-screen bg-cover bg-[50%_0%] sm:bg-[50%_50%]   bg-no-repeat bg-mobile-hero-pattern sm:bg-hero-pattern  gap-8 lg:items-start items-center  lg:justify-between justify-start overflow-x-hidden  animate-slow-zoom">
       {/* lg:pt-14 pt-4 lg:px-20 px-2 */}
       {loading ? (
         <main className=" z-[100] relative min-h-screen w-screen overflow-x-hidden">
@@ -309,7 +309,7 @@ export default function Home() {
               alt="Tech Mahindra Global Chess League"
               width={150}
               height={300}
-              className="w-40"
+              className="w-40 sm:w-44"
             />
           </div>
 
@@ -324,10 +324,10 @@ export default function Home() {
             <Image src={"/partner.png"} alt="Next move" width={140} height={300} className="md:hidden block rounded-lg" /> */}
           </div>
 
-          <div className="mx-auto mt-auto sm:mt-14 w-full">
+          <div className="mx-auto mt-auto sm:mt-10 w-full">
             <h1
               className={classNames(
-                "hidden sm:block lg:text-3xl text-[22px] sm:text-black text-[#571ABA] font-bold text-center mb-8",
+                "hidden sm:block lg:text-3xl text-[22px] text-[#2d1c42]  font-bold text-center mb-8",
                 audiowide.className
               )}
             >
@@ -336,14 +336,14 @@ export default function Home() {
             <div className=" bg-white bg-opacity-30 backdrop-blur-xl lg:px-8 px-4 md:px-8 py-5 text-center  md:max-w-full mx-auto sm:w-[500px] flex flex-col">
               <h1
                 className={classNames(
-                  "sm:hidden lg:text-3xl text-[22px] sm:text-black text-[#ebff00] font-bold text-center mb-6",
+                  "sm:hidden lg:text-3xl text-[22px] text-[#2d1c42]  font-bold text-center mb-6",
                   audiowide.className
                 )}
               >
                 Welcome to GCL Season 2
               </h1>
               <div className="flex mb-2 sm:my-2 sm:hidden gap-x-3 gap-y-2 justify-center flex-wrap ">
-                <div className=" flex items-center bg-white py-1 px-3 font-bold text-xs w-fit ">
+                <div className=" flex items-center bg-white py-1 pr-[1.5rem] font-bold text-xs w-fit ">
                   <Image
                     width={400}
                     height={400}
@@ -352,7 +352,7 @@ export default function Home() {
                     alt=""
                   />{" "}
                   <span className="font-bold"> Active Visitors:</span>{" "}
-                  <span className="text-[#571ABA]">{activeVisitors}</span>
+                  <span className="text-[#571ABA] ml-2">{activeVisitors}</span>
                 </div>
                 <div
                   className="cursor-pointer hidden sm:flex items-center bg-white py-1 px-3 font-bold text-xs w-fit min-w-[125px]"
@@ -376,18 +376,18 @@ export default function Home() {
                 </div>
               </div>
               <div className="mb-3">
-                <div className="w-full border flex items-center justify-between text-sm border-[#022043] px-3 py-4 mt-1 bg-white flex-wrap">
+                <div className="w-full  flex items-center justify-between text-sm   mt-1 bg-white flex-wrap">
                   <input
                     type="text"
                     placeholder="Enter Your Name"
-                    className="focus:outline-none w-full text-[#571ABA] placeholder:text-[#571ABA] font-semibold"
+                    className="outline outline-1 focus:outline-2 focus:outline outline-black focus:outline-[#571ABA] w-full text-[#571ABA] placeholder:text-[#571ABA] font-semibold px-3 py-4"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
               </div>
 
-              <div className="my-1 mb-3">
+              <div className="">
                 <div className="grid grid-flow-row grid-cols-2   gap-2 ">
                   <div
                     onClick={() => {
@@ -400,7 +400,7 @@ export default function Home() {
                         : "border border-[#022043] py-3 bg-white cursor-pointer  flex flex-row items-center justify-between  px-3 gap-1"
                     }
                   >
-                    <div className="flex flex-row items-center gap-2">
+                    <div className="flex flex-row items-center gap-2 focus:outline focus:outline-black focus:outline-2">
                       <Image
                         alt="male"
                         width={20}
@@ -409,7 +409,13 @@ export default function Home() {
                       />{" "}
                       Male
                     </div>
-                    <div>{gender == "male" ? <Checked /> : <UnChecked />}</div>
+                    <div>
+                      {gender == "male" ? (
+                        <Checked fill={"#571ABA"} />
+                      ) : (
+                        <UnChecked />
+                      )}
+                    </div>
                   </div>
 
                   <div
@@ -433,13 +439,20 @@ export default function Home() {
                       Female
                     </div>
                     <div>
-                      {gender == "female" ? <Checked /> : <UnChecked />}
+                      {gender == "female" ? (
+                        <Checked fill={"#571ABA"} />
+                      ) : (
+                        <UnChecked />
+                      )}
                     </div>
                   </div>
                 </div>
+                {gender && (
+                  <div className="mt-3 font-bold text-[#571ABA]">*&nbsp;Select Your Avatar</div>
+                )}
                 {/* the avatars */}
                 {gender && (
-                  <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative my-3 w-full mx-auto">
+                  <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative mt-[1.5] mb-3 w-full mx-auto">
                     {gender &&
                       (gender === "male" ? maleAvatars : femaleAvatars).map(
                         ({ id, src, height, width, className }) => (
@@ -473,11 +486,12 @@ export default function Home() {
               <button
                 disabled={gender == null || selected == 0 || name == ""}
                 type="button"
-                className={
+                className={classNames(
                   gender == null || selected == 0 || name == ""
-                    ? "mt-1 bg-opacity-65 bg-[#571ABA80] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center px-2 md:text-xl cursor-pointer"
-                    : "mt-1 bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl"
-                }
+                    ? " bg-opacity-65  bg-[#ebff00] border-black border  text-black font-semibold gap-2  py-3 text-center flex items-center w-full justify-center px-2 md:text-xl cursor-pointer"
+                    : " bg-opacity-100 bg-[#fff700] border-black border  text-black font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl",
+                  gender ? "mt-0" : "mt-3"
+                )}
                 onClick={() =>
                   window.open(
                     "https://events.gclverse.com/entrance1/?avatarId=" +
@@ -491,9 +505,10 @@ export default function Home() {
               {gender && (
                 <div className="flex flex-col gap-2 my-2">
                   <div className="mx-auto font-bold text-black text-xl">
-                    ♟️ OR ♟️
+                    {/* ♟️ */}
+                    OR
                   </div>
-                  <div className="mx-auto text-center font-bold text-xl w-full text-[#022043]">
+                  <div className="mx-auto text-center font-bold text-[1rem] sm:text-xl w-full text-black  ">
                     You can create your own custom look in few {"\n"}simple
                     steps. It is fun!{" "}
                   </div>
@@ -501,15 +516,15 @@ export default function Home() {
                     onClick={() => setIsFrameOpen(true)}
                     type="button"
                     className={
-                      "bg-opacity-100 bg-[#571ABA] border-black border  text-white font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl"
+                      "bg-opacity-100 hover:bg-[#fff700] bg-[#ebff00] border-black border  text-black font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl"
                     }
                   >
                     Create My Own Look
                   </button>
                 </div>
               )}
-              <div className="sm:flex mb-2 sm:my-2 hidden gap-x-3 gap-y-2 justify-center flex-wrap ">
-                <div className=" flex items-center bg-white py-1 px-3 font-bold text-xs w-fit ">
+              <div className="sm:flex mt-4 my-2 hidden gap-x-3 gap-y-2 justify-center flex-wrap ">
+                <div className=" flex items-center bg-white py-1 pr-[1.5rem] font-bold text-xs w-fit ">
                   <Image
                     width={400}
                     height={400}
@@ -517,20 +532,34 @@ export default function Home() {
                     src="/hand.gif"
                     alt=""
                   />{" "}
-                  <span className="font-bold"> Active Visitors:</span>{" "}
-                  <span className="text-[#571ABA]">{activeVisitors}</span>
+                  <span className="font-bold">
+                    {" "}
+                    Active Visitors:
+                  </span>
+                  {"   "}
+                  <span className="text-[#571ABA] ml-2">{activeVisitors}</span>
                 </div>
                 <div
                   className=" cursor-pointer hidden sm:flex items-center bg-white py-1 px-3 font-bold text-xs w-fit min-w-[125px]"
                   onClick={toggleSound}
                 >
+                {
+                  isSoundOn ?
                   <Image
                     className="w-10 h-5"
                     width={400}
                     height={400}
                     src="/stats.gif"
                     alt=""
-                  />{" "}
+                  />:
+                  <Image
+                    className="w-10 h-5"
+                    width={400}
+                    height={400}
+                    src="/stats.png"
+                    alt=""
+                  />
+                }
                   <span className="font-bold">Sound:</span>
                   <span className="text-[#571ABA] cursor-pointer">
                     {isSoundOn ? "On" : "Off"}
