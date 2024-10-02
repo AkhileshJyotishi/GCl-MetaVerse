@@ -267,8 +267,8 @@ export default function Home() {
               background: "linear-gradient(112.83deg, rgba(141, 141, 141, 0.47) 0%, rgba(0, 0, 0, 0) 110.84%)",
             }}
           >
-            <Image src={"/chess.svg"} alt="Next move" width={120} height={310} className="hidden md:block" />
-            <Image src={"/partner.png"} alt="Next move" width={140} height={300} className="md:hidden block rounded-lg" />
+            {/* <Image src={"/chess.svg"} alt="Next move" width={120} height={310} className="hidden md:block" />
+            <Image src={"/partner.png"} alt="Next move" width={140} height={300} className="md:hidden block rounded-lg" /> */}
           </div>
           <div className="mx-auto mt-[10rem] sm:mt-14 w-11/12">
             <h1 className="lg:text-3xl text-[22px] sm:text-black text-[#571ABA] font-bold text-center mb-8">Welcome to GCL Season 2</h1>
@@ -359,9 +359,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-white lg:block lg:absolute lg:top-14 top-4 right-0 hidden bg-opacity-10 backdrop-blur-md border border-white/20 rounded-lg p-4 px-6">
+          {/* <div className="bg-white lg:block lg:absolute lg:top-14 top-4 right-0 hidden bg-opacity-10 backdrop-blur-md border border-white/20 rounded-lg p-4 px-6">
             <Image src={"/chess.svg"} alt="Next move" width={180} height={300} />
-          </div>
+          </div> */}
           {isFrameOpen && <AvatarIframe setRpmFrame={setIsFrameOpen} setReadyPlayerUrl={setAvatarUrl} isMale={gender == "male"} />}
         </>
       )}
