@@ -134,8 +134,9 @@ export default function Home() {
     } catch (err) {
       console.log("Error Uploading object", err);
       toast.error("Creating Avatar Failed");
+      const defaultAvatar = (gender === "male" ? maleAvatars : femaleAvatars)[0].src;
 
-      const newAvatarId = (gender === "male" ? maleAvatars : femaleAvatars)[0].substring(1, src.length - 4);
+      const newAvatarId = defaultAvatar.substring(1, defaultAvatar.length - 4);
       window.open("https://events.gclverse.com/entrance1/?avatarId=" + newAvatarId, "_blank");
 
       // toast.update(toastId, { render: "Error uploading file", type: "error", isLoading: false });
@@ -242,9 +243,9 @@ export default function Home() {
       {/* lg:pt-14 pt-4 lg:px-20 px-2 */}
       {loading ? (
         <main className=" z-[100] relative min-h-screen w-screen overflow-x-hidden">
-          <video autoPlay playsInline muted loop id="myVideo" className="absolute w-auto select-none h-auto min-w-full min-h-full object-cover -z-10">
-            <source src={"/loading-background.mp4"} type="video/mp4" />
-          </video>
+          {/* //  autoPlay playsInline muted loop id="myVideo" className="absolute w-auto select-none h-auto min-w-full min-h-full object-cover -z-10">
+          //   <source src={"/loading-background.mp4"} type="video/mp4" />
+          // </img> */}
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[rgba(2,32,67,0.91)]">
             <div className="absolute  bottom-0 md:bottom-8 right-0 left-0   w-full md:w-3/5 mx-auto shadow-lg">
               <BasicProgressBarWithLabel currentValue={progress} label="Loading" maxValue={100} key={"progress"} />
