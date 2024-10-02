@@ -13,7 +13,7 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "hero-pattern": "url('/home-bg.jpg')",
-        "mobile-hero-pattern":"url(/render.jpg)",
+        "mobile-hero-pattern": "url(/render-copy-1.jpg)",
 
         "instructions-bg": "url('/instructions-bg.png')",
 
@@ -47,7 +47,7 @@ const config: Config = {
         },
       },
       animation: {
-        'slow-zoom': 'zoom 30s ease-in-out infinite',   
+        'slow-zoom': 'zoom 30s ease-in-out infinite',
         'scale-bg': 'scaleBg 30s ease-in-out infinite',
       },
 
