@@ -127,7 +127,7 @@ export default function Home() {
       // console.log("------ the uploaded url", uploadedObjectUrl);
       // return { data, url: uploadedObjectUrl };
       //set loading to true and upload progres
-      window.open("https://events.gclverse.com/entrance1/?avatarId=" + name, "_blank");s
+      window.open("https://events.gclverse.com/entrance1/?avatarId=" + name, "_blank");
 
       onLoadingComplete();
       setloading(false);
