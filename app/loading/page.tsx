@@ -1,10 +1,11 @@
-// "use client";
-// import { useState } from "react";
+"use client";
+import React, { useState } from "react";
 
-
-// export default function Home() {
-//     const [loadVal, setloadVal] = useState(90);
-//     return (
-       
-//     );
-// }
+export default function Home() {
+  const [loadVal, setloadVal] = useState(90);
+  return (
+    <>
+      <h1></h1>
+    </>
+  );
+}

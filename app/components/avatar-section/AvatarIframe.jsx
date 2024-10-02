@@ -1,3 +1,4 @@
+//@ts-ignore
 import React, { useEffect, useRef, useState } from "react";
 
 const subdomain = "graphity"; // Replace with your custom subdomain
