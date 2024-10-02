@@ -521,7 +521,7 @@ export default function Home() {
                   <span className="text-[#571ABA]">{activeVisitors}</span>
                 </div>
                 <div
-                  className="mt-2 cursor-pointer hidden sm:flex items-center bg-white py-1 px-3 font-bold text-xs w-fit min-w-[125px]"
+                  className=" cursor-pointer hidden sm:flex items-center bg-white py-1 px-3 font-bold text-xs w-fit min-w-[125px]"
                   onClick={toggleSound}
                 >
                   <Image
