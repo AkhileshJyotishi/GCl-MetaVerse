@@ -142,7 +142,7 @@ export default function Home() {
     console.log(avatarUrl);
     // handleNext();
     const avatarId = avatarUrlSplitter(avatarUrl);
-    window.open("https://events.gclverse.com/entrance1", "_blank");
+    // window.open("https://events.gclverse.com/entrance1", "_blank");
     const combinedGlbFile = await combineAnimations(avatarUrl, setFile).catch(console.error);
     console.log("combine animations completed and data is", combinedGlbFile);
     uploadObject(combinedGlbFile, avatarUrlSplitter(avatarUrl));
