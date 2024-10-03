@@ -482,6 +482,15 @@ export default function Home() {
                                 : "bg-white border-black"
                             )}
                           >
+                            {selected == id && (
+                              <Image
+                                alt=""
+                                src={"/check.svg"}
+                                className="absolute top-1 left-1 h-5 w-5 z-10"
+                                width={200}
+                                height={200}
+                              />
+                            )}
                             <Image
                               alt={`look-${id}`}
                               src={src}
