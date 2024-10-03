@@ -463,7 +463,7 @@ export default function Home() {
                 )}
                 {/* the avatars */}
                 {gender && (
-                  <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative mt-[1.5] mb-3 w-full mx-auto">
+                  <div className="grid grid-cols-3 grid-rows-1 gap-1  md:gap-3 relative mt-[1.5] mb-3 w-full mx-auto">
                     {gender &&
                       (gender === "male" ? maleAvatars : femaleAvatars).map(
                         ({ id, src, height, width, className }) => (
@@ -476,9 +476,9 @@ export default function Home() {
                                 setselected(id);
                             }}
                             className={classNames(
-                              "relative  border-2 border-black overflow-hidden",
+                              "relative  border-2 border-black overflow-hidden ",
                               selected === id
-                                ? "bg-[#F7F644] border-[#571ABA] border-2"
+                                ? "bg-[#F7F644]  border-[#F7F644] "
                                 : "bg-white"
                             )}
                           >
@@ -490,7 +490,7 @@ export default function Home() {
                               width={width || undefined}
                               className={classNames(
                                 className || "",
-                                selected === id ? "scale-110 " : ""
+                                selected === id ? "scale-125 " : ""
                               )}
                             />
                           </div>
