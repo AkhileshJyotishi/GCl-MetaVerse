@@ -2,7 +2,7 @@
 import classNames from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Group } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter";
@@ -114,8 +114,19 @@ export default function Home() {
   const [progress, setProgress] = useState(0);
   const [loading, setloading] = useState(false);
   const [enabled,setEnabled]=useState(false);
-  const isMobile=window.innerWidth<=426
+    const [isMobile, setIsMobile] = useState(false);
+
   let interval;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 426);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
 
   const toggleSound = () => {
     setIsSoundOn(!isSoundOn);
@@ -198,6 +209,29 @@ export default function Home() {
     console.log(splitUrl);
     return splitUrl;
   }
+
+let currentVisitors = 1000; // Start with 1000 visitors
+const minVisitors = 1000;
+const maxVisitors = 10000;
+
+// Function to gradually change the number of active users
+const calculateCurrentActiveUsers =() => {
+  // Get the current timestamp in seconds
+  const timestamp = Math.floor(Date.now() / 1000);
+
+  // Generate a gradual increase or decrease using a sine function for smooth transitions
+  // This creates a smooth oscillation between the min and max visitors
+  const visitors = Math.floor(minVisitors + (maxVisitors - minVisitors) * (0.5 + 0.5 * Math.sin(timestamp / 60)));
+
+  // Set the active visitors (this assumes you're using some state management)
+  setactiveVisitors(visitors);
+
+  // Optionally, you can log or display the visitors count
+  console.log("Current Active Users:", visitors);
+}
+
+// Call the function every second to update the visitors count
+// setInterval(calculateCurrentActiveUsers, 1000);
 
   const startFakeLoading = () => {
     interval = setInterval(() => {
