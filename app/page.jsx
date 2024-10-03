@@ -165,7 +165,7 @@ export default function Home() {
 
       const newAvatarId = defaultAvatar.substring(1, defaultAvatar.length - 4);
       window.open(
-        "https://events.gclverse.com/entrance1/?avatarId=" + newAvatarId,
+        "https://events.gclverse.com/entrance1/?name=" + name + "&avatarId="+ newAvatarId ,
         "_self"
       );
 
@@ -190,7 +190,7 @@ export default function Home() {
     if (progress == 100) {
       setloading(false);
       window.open(
-        "https://events.gclverse.com/entrance1/?avatarId=" +
+        "https://events.gclverse.com/entrance1/?name=" + name + "&avatarId=" +
           avatarUrlSplitter(avatarUrl),
         "_self"
       );
@@ -587,7 +587,7 @@ function updateVisitors() {
                     : " bg-opacity-100 bg-[#fff700] border-black border  text-black font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl",
                   gender ? "mt-0" : "mt-3"
                 )}
-                onClick={() => window.open(  "https://events.gclverse.com/entrance1/?avatarId=" +   selectedAvatarId,   "_self")
+                onClick={() => window.open(  "https://events.gclverse.com/entrance1/?name=" + name + "&avatarId=" +   selectedAvatarId,   "_self")
                 }
               >
                 {enabled ? (
