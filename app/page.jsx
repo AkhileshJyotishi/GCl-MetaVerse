@@ -76,11 +76,11 @@ const femaleAnimations = {
 };
 
 const maleAvatars = [
-  { id: 1, src: "/male_1.png" },
-  { id: 2, src: "/male_2.png" },
+  { id: 1, src: "/male_1.webp" },
+  { id: 2, src: "/male_2.webp" },
   {
     id: 3,
-    src: "/male_3.png",
+    src: "/male_3.webp",
     height: 800,
     width: 800,
     className: "h-24 sm:h-28 w-36 md:h-36",
@@ -88,11 +88,11 @@ const maleAvatars = [
 ];
 
 const femaleAvatars = [
-  { id: 4, src: "/female_1.png" },
-  { id: 5, src: "/female_2.png" },
+  { id: 4, src: "/female_1.webp" },
+  { id: 5, src: "/female_2.webp" },
   {
     id: 6,
-    src: "/female_3.png",
+    src: "/female_3.webp",
     height: 800,
     width: 800,
     className: "h-24 sm:h-28 w-36 md:h-36",
@@ -113,8 +113,8 @@ export default function Home() {
   const [selectedAvatarId, setSelectedAvatarId] = useState("");
   const [progress, setProgress] = useState(0);
   const [loading, setloading] = useState(false);
-  const [enabled,setEnabled]=useState(false);
-  const isMobile=window.innerWidth<=426
+  const [enabled, setEnabled] = useState(false);
+  const isMobile = window.innerWidth <= 426;
   let interval;
 
   const toggleSound = () => {
@@ -470,8 +470,8 @@ export default function Home() {
                                 setselected(id);
                             }}
                             className={classNames(
-                              "relative border border-black",
-                              selected === id ? "bg-[#F7F644]" : "bg-white"
+                              "relative  border-2 border-black overflow-hidden",
+                              selected === id ? "bg-[#F7F644] border-[#571ABA] border-2" : "bg-white"
                             )}
                           >
                             <Image
@@ -480,7 +480,7 @@ export default function Home() {
                               fill={!height && !width}
                               height={height || undefined}
                               width={width || undefined}
-                              className={className || ""}
+                              className={classNames((className || ""),selected===id ?"scale-110 ":"")}
                             />
                           </div>
                         )
@@ -497,13 +497,24 @@ export default function Home() {
                     : " bg-opacity-100 bg-[#fff700] border-black border  text-black font-semibold gap-2  py-3 text-center flex items-center w-full justify-center md:text-xl",
                   gender ? "mt-0" : "mt-3"
                 )}
-                onClick={() => window.open(  "https://events.gclverse.com/entrance1/?avatarId=" +   selectedAvatarId,   "_self")
+                onClick={() =>
+                  window.open(
+                    "https://events.gclverse.com/entrance1/?avatarId=" +
+                      selectedAvatarId,
+                    "_self"
+                  )
                 }
               >
                 {enabled ? (
-                  <SpinnerCircular size={isMobile ?24:28 } color="#000" thickness={120} />
+                  <SpinnerCircular
+                    size={isMobile ? 24 : 28}
+                    color="#000"
+                    thickness={120}
+                  />
                 ) : (
-                  <div onClick={()=>setEnabled(true)}>Let&apos;s Visit Friends House in London</div>
+                  <div onClick={() => setEnabled(true)}>
+                    Let&apos;s Visit Friends House in London
+                  </div>
                 )}
               </button>
               {gender && (
