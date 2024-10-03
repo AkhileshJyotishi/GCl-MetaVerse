@@ -476,10 +476,10 @@ export default function Home() {
                                 setselected(id);
                             }}
                             className={classNames(
-                              "relative  border-2 border-black overflow-hidden ",
+                              "relative  border-2  overflow-hidden ",
                               selected === id
                                 ? "bg-[#F7F644]  border-[#F7F644] "
-                                : "bg-white"
+                                : "bg-white border-black"
                             )}
                           >
                             <Image
