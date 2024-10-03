@@ -119,6 +119,7 @@ export default function Home() {
   let interval;
 
   useEffect(() => {
+    updateVisitors();
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 426);
     };
@@ -210,25 +211,80 @@ export default function Home() {
     return splitUrl;
   }
 
-let currentVisitors = 1000; // Start with 1000 visitors
-const minVisitors = 1000;
-const maxVisitors = 10000;
 
-// Function to gradually change the number of active users
-const calculateCurrentActiveUsers =() => {
-  // Get the current timestamp in seconds
-  const timestamp = Math.floor(Date.now() / 1000);
+function updateVisitors() {
+  var startDate = new Date("2024-10-02");
 
-  // Generate a gradual increase or decrease using a sine function for smooth transitions
-  // This creates a smooth oscillation between the min and max visitors
-  const visitors = Math.floor(minVisitors + (maxVisitors - minVisitors) * (0.5 + 0.5 * Math.sin(timestamp / 60)));
+  // Get the current date
+  var currentDate = new Date();
+  // 148956;
+  // Calculate the time difference in milliseconds
+  var timeDifference = currentDate - startDate;
 
-  // Set the active visitors (this assumes you're using some state management)
-  setactiveVisitors(visitors);
+  // Convert milliseconds to seconds
+  var secondsDifference = Math.floor(timeDifference / 90000); //changed here to make it better
 
-  // Optionally, you can log or display the visitors count
-  console.log("Current Active Users:", visitors);
+  // console.log("Seconds between start date and now: " + secondsDifference);
+
+  var dividend = secondsDifference;
+  var divisor = 4;
+
+  // Calculate the quotient (Q) and remainder (R)
+  var quotient = Math.floor(dividend / divisor);
+  var remainder = dividend % divisor;
+
+  // console.log(`Quotient (Q): ${quotient}`);
+  // console.log(`Remainder (R): ${remainder}`);
+
+  function sumOfTriangularNumbers(n) {
+    return (n * (n + 1) * (n + 2)) / 6;
+  }
+
+  // Example: Calculate the sum of the first 20 triangular numbers
+  var sum = sumOfTriangularNumbers(4);
+  var sumofR = sumOfTriangularNumbers(remainder);
+  var currentValue = quotient * sum + sumofR;
+  // console.log(`Sum of the first ${secondsDifference}  numbers: ${currentValue}`);
+
+  let visitorCount = currentValue;
+  let n = remainder;
+
+  // const interval = setInterval(() => {
+  const triangularNumber = (n * (n + 1)) / 2;
+  visitorCount += triangularNumber;
+
+  // Print the updated visitorCount
+  console.log(`Visitor Count Updated: ${visitorCount}`);
+
+  // Increment the value of n for the next triangular number
+  n++;
+  if (n == 4) {
+    n = 1;
+  }
+
+  console.log(visitorCount);
+
+  setactiveVisitors(visitorCount);//this is total visitors
+
+  // }, 1000);
 }
+
+
+// // Function to gradually change the number of active users
+// const calculateCurrentActiveUsers =() => {
+//   // Get the current timestamp in seconds
+//   const timestamp = Math.floor(Date.now() / 1000);
+
+//   // Generate a gradual increase or decrease using a sine function for smooth transitions
+//   // This creates a smooth oscillation between the min and max visitors
+//   const visitors = Math.floor(minVisitors + (maxVisitors - minVisitors) * (0.5 + 0.5 * Math.sin(timestamp / 60)));
+
+//   // Set the active visitors (this assumes you're using some state management)
+//   setactiveVisitors(visitors);
+
+//   // Optionally, you can log or display the visitors count
+//   console.log("Current Active Users:", visitors);
+// }
 
 // Call the function every second to update the visitors count
 // setInterval(calculateCurrentActiveUsers, 1000);
@@ -570,7 +626,7 @@ const calculateCurrentActiveUsers =() => {
                     src="/hand.gif"
                     alt=""
                   />{" "}
-                  <span className="font-bold"> Active Visitors:</span>
+                  <span className="font-bold"> Total Visitors:</span>
                   {"   "}
                   <span className="text-[#571ABA] ml-2">{activeVisitors}</span>
                 </div>
