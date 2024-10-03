@@ -114,7 +114,8 @@ export default function Home() {
   const [progress, setProgress] = useState(0);
   const [loading, setloading] = useState(false);
   const [enabled, setEnabled] = useState(false);
-  const isMobile = window.innerWidth <= 426;
+  const [isMobile, setIsMobile] = useState();
+  // const isMobile = window.innerWidth <= 426;
   let interval;
 
   const toggleSound = () => {
@@ -190,7 +191,12 @@ export default function Home() {
     // alert(avatarUrl)
     combineAndLoadAnimation(avatarUrl);
   }, [avatarUrl]);
-
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      // Client-side-only code
+      setIsMobile(window.innerWidth <= 426);
+    }
+  }, []);
   function avatarUrlSplitter(avatarUrl) {
     const splitUrl = avatarUrl
       .split("https://models.readyplayer.me/")[1]
@@ -471,7 +477,9 @@ export default function Home() {
                             }}
                             className={classNames(
                               "relative  border-2 border-black overflow-hidden",
-                              selected === id ? "bg-[#F7F644] border-[#571ABA] border-2" : "bg-white"
+                              selected === id
+                                ? "bg-[#F7F644] border-[#571ABA] border-2"
+                                : "bg-white"
                             )}
                           >
                             <Image
@@ -480,7 +488,10 @@ export default function Home() {
                               fill={!height && !width}
                               height={height || undefined}
                               width={width || undefined}
-                              className={classNames((className || ""),selected===id ?"scale-110 ":"")}
+                              className={classNames(
+                                className || "",
+                                selected === id ? "scale-110 " : ""
+                              )}
                             />
                           </div>
                         )
