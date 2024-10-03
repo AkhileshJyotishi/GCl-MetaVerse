@@ -444,7 +444,7 @@ function updateVisitors() {
                     src="/hand.gif"
                     alt=""
                   />{" "}
-                  <span className="font-bold"> Active Visitors:</span>{" "}
+                  <span className="font-bold"> Total Visitors:</span>{" "}
                   <span className="text-[#571ABA] ml-2">{activeVisitors}</span>
                 </div>
                 <div
