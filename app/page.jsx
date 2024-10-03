@@ -76,11 +76,11 @@ const femaleAnimations = {
 };
 
 const maleAvatars = [
-  { id: 1, src: "/male_1.png" },
-  { id: 2, src: "/male_2.png" },
+  { id: 1, src: "/male_1.webp" },
+  { id: 2, src: "/male_2.webp" },
   {
     id: 3,
-    src: "/male_3.png",
+    src: "/male_3.webp",
     height: 800,
     width: 800,
     className: "h-24 sm:h-28 w-36 md:h-36",
@@ -88,11 +88,11 @@ const maleAvatars = [
 ];
 
 const femaleAvatars = [
-  { id: 4, src: "/female_1.png" },
-  { id: 5, src: "/female_2.png" },
+  { id: 4, src: "/female_1.webp" },
+  { id: 5, src: "/female_2.webp" },
   {
     id: 6,
-    src: "/female_3.png",
+    src: "/female_3.webp",
     height: 800,
     width: 800,
     className: "h-24 sm:h-28 w-36 md:h-36",
@@ -113,9 +113,9 @@ export default function Home() {
   const [selectedAvatarId, setSelectedAvatarId] = useState("");
   const [progress, setProgress] = useState(0);
   const [loading, setloading] = useState(false);
-  const [enabled,setEnabled]=useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-
+  const [enabled, setEnabled] = useState(false);
+  const [isMobile, setIsMobile] = useState();
+  // const isMobile = window.innerWidth <= 426;
   let interval;
 
   useEffect(() => {
@@ -202,7 +202,12 @@ export default function Home() {
     // alert(avatarUrl)
     combineAndLoadAnimation(avatarUrl);
   }, [avatarUrl]);
-
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      // Client-side-only code
+      setIsMobile(window.innerWidth <= 426);
+    }
+  }, []);
   function avatarUrlSplitter(avatarUrl) {
     const splitUrl = avatarUrl
       .split("https://models.readyplayer.me/")[1]
@@ -547,7 +552,7 @@ function updateVisitors() {
                 )}
                 {/* the avatars */}
                 {gender && (
-                  <div className="grid grid-cols-3 grid-rows-1 gap-1 md:gap-3 relative mt-[1.5] mb-3 w-full mx-auto">
+                  <div className="grid grid-cols-3 grid-rows-1 gap-1  md:gap-3 relative mt-[1.5] mb-3 w-full mx-auto">
                     {gender &&
                       (gender === "male" ? maleAvatars : femaleAvatars).map(
                         ({ id, src, height, width, className }) => (
@@ -560,17 +565,31 @@ function updateVisitors() {
                                 setselected(id);
                             }}
                             className={classNames(
-                              "relative border border-black",
-                              selected === id ? "bg-[#F7F644]" : "bg-white"
+                              "relative  border-2  overflow-hidden ",
+                              selected === id
+                                ? "bg-[#F7F644]  border-[#F7F644] "
+                                : "bg-white border-black"
                             )}
                           >
+                            {selected == id && (
+                              <Image
+                                alt=""
+                                src={"/check.svg"}
+                                className="absolute top-1 left-1 h-5 w-5 z-10"
+                                width={200}
+                                height={200}
+                              />
+                            )}
                             <Image
                               alt={`look-${id}`}
                               src={src}
                               fill={!height && !width}
                               height={height || undefined}
                               width={width || undefined}
-                              className={className || ""}
+                              className={classNames(
+                                className || "",
+                                selected === id ? "scale-125 " : ""
+                              )}
                             />
                           </div>
                         )
@@ -591,9 +610,15 @@ function updateVisitors() {
                 }
               >
                 {enabled ? (
-                  <SpinnerCircular size={isMobile ?24:28 } color="#000" thickness={120} />
+                  <SpinnerCircular
+                    size={isMobile ? 24 : 28}
+                    color="#000"
+                    thickness={120}
+                  />
                 ) : (
-                  <div onClick={()=>setEnabled(true)}>Let&apos;s Visit Friends House in London</div>
+                  <div onClick={() => setEnabled(true)}>
+                    Let&apos;s Visit Friends House in London
+                  </div>
                 )}
               </button>
               {gender && (
