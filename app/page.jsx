@@ -163,7 +163,7 @@ export default function Home() {
       const defaultAvatar = (gender === "male" ? maleAvatars : femaleAvatars)[0]
         .src;
 
-      const newAvatarId = defaultAvatar.substring(1, defaultAvatar.length - 4);
+      const newAvatarId = defaultAvatar.substring(1, defaultAvatar.length - 5);
       window.open(
         "https://events.gclverse.com/entrance1/?name=" + name + "&avatarId="+ newAvatarId ,
         "_self"
@@ -560,7 +560,7 @@ function updateVisitors() {
                             key={id}
                             onClick={() => {
                               setSelectedAvatarId(
-                                src.substring(1, src.length - 4)
+                                src.substring(1, src.length - 5)
                               ),
                                 setselected(id);
                             }}
